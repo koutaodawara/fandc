@@ -6,61 +6,33 @@ class HomesController < ApplicationController
   def recruit
   end
 
-  def product
+  def company
   end
 
   def about
   end
 
-  def information
+  def infomation
   end
 
   def idea
   end
 
   def new # contancになる
-    @home = Home.new
+    @form = Home.new
   end
 
   def create
-    @home = Home.new(home_params)
-
-    respond_to do |format|
-      if @home.save
-        format.html { redirect_to @home, notice: 'Home was successfully created.' }
-        format.json { render :show, status: :created, location: @home }
+    @form = Home.new(form_params)
+      if @form.save
+        redirect_to :root
       else
-        format.html { render :new }
-        format.json { render json: @home.errors, status: :unprocessable_entity }
+         render action: :new, alert: "入力情報をご確認下さい"
       end
     end
-  end
-
-  # PATCH/PUT /homes/1
-  # PATCH/PUT /homes/1.json
-  def update
-    respond_to do |format|
-      if @home.update(home_params)
-        format.html { redirect_to @home, notice: 'Home was successfully updated.' }
-        format.json { render :show, status: :ok, location: @home }
-      else
-        format.html { render :edit }
-        format.json { render json: @home.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /homes/1
-  # DELETE /homes/1.json
-  def destroy
-    @home.destroy
-    respond_to do |format|
-      format.html { redirect_to homes_url, notice: 'Home was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
-  def home_params
+  def form_params
+    params.require(:home).permit(:name, :email, :telephone, :title, :message)
   end
 end

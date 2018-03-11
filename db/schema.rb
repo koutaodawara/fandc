@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20180224042919) do
 
   create_table "homes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.string "email"
     t.string "company"
     t.integer "telephone"
     t.integer "postnum"
