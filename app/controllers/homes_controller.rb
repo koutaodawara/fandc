@@ -34,6 +34,6 @@ class HomesController < ApplicationController
 
   private
   def form_params
-    params.require(:home).permit(:name, :email, :telephone, :title, :message)
+    params.require(:home).permit(:name, :email, :telephone, :title, :message, :company, :postnum, :address)
   end
 end
