@@ -27,7 +27,8 @@ class HomesController < ApplicationController
       if @form.save
         redirect_to :root
       else
-         render action: :new, alert: "入力情報をご確認下さい"
+        flash.now[:alert] = '入力不足がございます'
+         render action: :new
       end
     end
 
