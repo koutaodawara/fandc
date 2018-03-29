@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'homes#index'
   resources :homes, only: [:index, :new, :create]
+  get 'home'    => 'homes#index'
+  get 'services' => 'homes#infomation'
   get 'recruit' => 'homes#recruit'#採用情報
   get 'company' => 'homes#company' #会社紹介
   get 'about'   => 'homes#about'  #事業内容
