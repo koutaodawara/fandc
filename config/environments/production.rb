@@ -93,8 +93,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = true
 
-   ENV['MAIL_PASS']
-
   config.action_mailer.default_url_options = { host: 'www2150.sakura.ne.jp' } # 追加
   config.action_mailer.delivery_method = :letter_opener_web # 追加
 
@@ -107,7 +105,6 @@ Rails.application.configure do
     domain: 'fuji-cherry.com',
     authentication: 'plain',
     user_name: ENV['MAIL_USER'],
-    password: ENV['MAIL_PASS'],
-    tls: true
+    password: ENV['MAIL_PASS']
   }
 end
