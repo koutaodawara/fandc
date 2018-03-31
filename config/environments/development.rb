@@ -26,19 +26,32 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
-  # Print deprecation notices to the Rails logger.
+  config.action_mailer.default_url_options = { host: 'www2150.sakura.ne.jp' } # 追加
+  config.action_mailer.delivery_method = :letter_opener_web # 追加
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto:  true,
+    address: 'fujiandcherry.sakura.ne.jp',
+    port: '587',
+    domain: 'fuji-cherry.com',
+    authentication: 'plain',
+    user_name: ENV['MAIL_USER'],
+    password: ENV['MAIL_PASS'],
+  }
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+
+   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-
-  # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
 
