@@ -25,7 +25,11 @@ class HomesController < ApplicationController
   def create
     @form = Home.new(form_params)
       if @form.save
-        FormMailer.received_email(@form).deliver
+        if @form.title == "商品に関するお問合わせ"
+          FormMailer.good_sender(@form).deliver
+        else
+          FormMailer.received_email(@form).deliver
+        end
         redirect_to :root
       else
         flash.now[:alert] = '入力不足がございます。ご確認ください'
