@@ -42,7 +42,7 @@ Rails.application.configure do
     domain: 'fuji-cherry.com',
     authentication: 'plain',
     user_name: ENV['MAIL_USER'],
-    password: ENV['MAIL_PASS'],
+    password: ENV['MAIL_PASS']
   }
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
